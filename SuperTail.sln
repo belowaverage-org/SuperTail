@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTail", "SuperTail\SuperTail.csproj", "{A9420EC5-82C7-4E01-8D8C-82F52C1EA4C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9420EC5-82C7-4E01-8D8C-82F52C1EA4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9420EC5-82C7-4E01-8D8C-82F52C1EA4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9420EC5-82C7-4E01-8D8C-82F52C1EA4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9420EC5-82C7-4E01-8D8C-82F52C1EA4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1295AD16-3066-446A-A363-4A58919986B0}
+	EndGlobalSection
+EndGlobal
