@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            rtbMain = new RichTextBox();
             ssMain = new StatusStrip();
             tsslSelected = new ToolStripStatusLabel();
             tsslSpacer = new ToolStripStatusLabel();
@@ -47,6 +46,8 @@
             tvMain = new TreeView();
             tbPath = new TextBox();
             tlpMain = new TableLayoutPanel();
+            colorDialog1 = new ColorDialog();
+            lvMain = new LogViewer();
             ssMain.SuspendLayout();
             msMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)scMain).BeginInit();
@@ -56,22 +57,6 @@
             tlpFileTree.SuspendLayout();
             tlpMain.SuspendLayout();
             SuspendLayout();
-            // 
-            // rtbMain
-            // 
-            rtbMain.BackColor = Color.White;
-            rtbMain.DetectUrls = false;
-            rtbMain.Dock = DockStyle.Fill;
-            rtbMain.HideSelection = false;
-            rtbMain.Location = new Point(0, 0);
-            rtbMain.Margin = new Padding(0);
-            rtbMain.Name = "rtbMain";
-            rtbMain.ReadOnly = true;
-            rtbMain.ShortcutsEnabled = false;
-            rtbMain.Size = new Size(527, 475);
-            rtbMain.TabIndex = 0;
-            rtbMain.Text = "";
-            rtbMain.WordWrap = false;
             // 
             // ssMain
             // 
@@ -184,7 +169,7 @@
             // 
             // scMain.Panel2
             // 
-            scMain.Panel2.Controls.Add(rtbMain);
+            scMain.Panel2.Controls.Add(lvMain);
             scMain.Panel2MinSize = 300;
             scMain.Size = new Size(778, 475);
             scMain.SplitterDistance = 250;
@@ -258,6 +243,15 @@
             tlpMain.Size = new Size(784, 524);
             tlpMain.TabIndex = 5;
             // 
+            // lvMain
+            // 
+            lvMain.BorderStyle = BorderStyle.Fixed3D;
+            lvMain.Dock = DockStyle.Fill;
+            lvMain.Location = new Point(0, 0);
+            lvMain.Name = "lvMain";
+            lvMain.Size = new Size(527, 475);
+            lvMain.TabIndex = 0;
+            // 
             // fMain
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
@@ -287,8 +281,6 @@
         }
 
         #endregion
-
-        private RichTextBox rtbMain;
         private StatusStrip ssMain;
         private MenuStrip msMain;
         private ToolStripMenuItem tsmiFile;
@@ -307,5 +299,7 @@
         private ToolStripStatusLabel tsslMemory;
         private ToolStripStatusLabel tsslSpacer;
         private ToolStripStatusLabel tsslCPU;
+        private ColorDialog colorDialog1;
+        private LogViewer lvMain;
     }
 }

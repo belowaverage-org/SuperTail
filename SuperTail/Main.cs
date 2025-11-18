@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using Timer = System.Windows.Forms.Timer;
 
@@ -11,6 +12,7 @@ namespace SuperTail
         private SemaphoreSlim EnumFilesInScopeSS = new(1);
         private Process CurrentProcess = Process.GetCurrentProcess();
         private double LastTotalProcessorTime = 0;
+        private List<string?> Log = new();
         private Timer UpdateIndicatorsTimer = new()
         {
             Enabled = true,
@@ -156,13 +158,15 @@ namespace SuperTail
                 StreamReader sr = File.OpenText(file);
                 while (sr.EndOfStream == false)
                 {
-                    rtbMain.AppendText(await sr.ReadLineAsync() + '\n');
+                    lvMain.Append(await sr.ReadLineAsync());
+                    //rtbMain.AppendText(await sr.ReadLineAsync() + '\n');
                 }
+                lvMain.Invalidate();
             }
         }
         private async Task StopWatcher()
         {
-            rtbMain.Text = string.Empty;
+            lvMain.Clear();
         }
         private async Task EnumerateFilesInScope(List<string> DirectoriesAndFiles, string Filter, List<string> OutFilesInScope, SemaphoreSlim SS)
         {
