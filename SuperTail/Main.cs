@@ -158,15 +158,13 @@ namespace SuperTail
                 StreamReader sr = File.OpenText(file);
                 while (sr.EndOfStream == false)
                 {
-                    lvMain.Append(await sr.ReadLineAsync());
-                    //rtbMain.AppendText(await sr.ReadLineAsync() + '\n');
+                    lvMain.Log.Add(Path.GetFileName(file), await sr.ReadLineAsync());
                 }
-                lvMain.Invalidate();
             }
         }
         private async Task StopWatcher()
         {
-            lvMain.Clear();
+            lvMain.Log.Clear();
         }
         private async Task EnumerateFilesInScope(List<string> DirectoriesAndFiles, string Filter, List<string> OutFilesInScope, SemaphoreSlim SS)
         {
