@@ -24,11 +24,14 @@ namespace SuperTail
             tvMain.BeforeExpand += TvMain_BeforeExpand;
             UpdateIndicatorsTimer.Tick += UpdateIndicatorsTimer_Tick;
             tbPath_TextChanged(null, null);
+
+            
         }
 
         private void UpdateIndicatorsTimer_Tick(object? sender, EventArgs e)
         {
             CurrentProcess.Refresh();
+            tsslSelected.Text = $"Selected: {SelectedFiles.Count}";
             tsslMemory.Text = $"Mem: {CurrentProcess.PrivateMemorySize64 / 1024 / 1024} MB";
             tsslCPU.Text = $"CPU: {(int)(CurrentProcess.TotalProcessorTime.TotalMicroseconds - LastTotalProcessorTime) / 50000}%";
             LastTotalProcessorTime = CurrentProcess.TotalProcessorTime.TotalMicroseconds;
@@ -144,7 +147,6 @@ namespace SuperTail
             }
             if (dirEvent) await EnumerateFilesInScope(CheckedItems, tbFilter.Text, SelectedFiles, EnumFilesInScopeSS);
             UpdateNodeCheckedStatus(e.Node, true);
-            tsslSelected.Text = $"Selected: {SelectedFiles.Count}";
             _ = StartWatcher();
             tlpFileTree.Enabled = true;
         }
@@ -194,18 +196,18 @@ namespace SuperTail
                     {
                         //if (Main.Canceled) return 0;
                         childTasks.Add(EnumerateFilesInScopeWorker(subDir, Filter, OutFilesInScope, SS));
-                        SS.Wait();
-                        Invoke(() => { tsslSelected.Text = $"Selecting: {OutFilesInScope.Count}"; });
-                        SS.Release();
+                        //SS.Wait();
+                        //Invoke(() => { tsslSelected.Text = $"Selecting: {OutFilesInScope.Count}"; });
+                        //SS.Release();
                     }
                     foreach (FileInfo file in StartingDirectory.EnumerateFiles())
                     {
                         //if (Main.Canceled) return 0;
-                        SS.Wait();
-                        bool exists = OutFilesInScope.Contains(file.FullName);
-                        SS.Release();
+                        //SS.Wait();
+                        //bool exists = OutFilesInScope.Contains(file.FullName);
+                        //SS.Release();
                         //Check if file is in scope placeholder
-                        if (!exists && Regex.IsMatch(file.Name, Filter))
+                        if (/*!exists &&*/ Regex.IsMatch(file.Name, Filter))
                         {
                             SS.Wait();
                             OutFilesInScope.Add(file.FullName);
